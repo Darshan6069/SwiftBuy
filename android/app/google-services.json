@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "861008742869",
+    "project_id": "ecommerce-bfde3",
+    "storage_bucket": "ecommerce-bfde3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861008742869:android:13414cec1ed1a81618955c",
+        "android_client_info": {
+          "package_name": "com.ecomme"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChW5dKUuWg0a_zHB3JA-v5hgtsWsN2pv0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
