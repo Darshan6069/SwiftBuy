@@ -7,6 +7,7 @@ import '../../../common/Ragistration/button.dart';
 import '../../../common/Ragistration/common_text.dart';
 import '../../../common/Ragistration/google_facebook_Button.dart';
 import '../../../common/Ragistration/textformfeild.dart';
+import '../../../forgot_password/forgot_password.dart';
 import '../login_screen.dart';
 
 class RagistrationScreen extends StatefulWidget {
@@ -73,7 +74,12 @@ class _RagistrationScreenState extends State<RagistrationScreen> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ForgotPassword(),
+                    ),
+                  ),
                   child: const Text(
                     'Forgot Password',
                     style: TextStyle(color: Colors.red, fontSize: 15),
@@ -101,8 +107,8 @@ class _RagistrationScreenState extends State<RagistrationScreen> {
             ),
             GestureDetector(
               onTap: () {},
-              child:
-                  const GoogleFacebookButton(image: 'assets/LoginScreen/google.svg'),
+              child: const GoogleFacebookButton(
+                  image: 'assets/LoginScreen/google.svg'),
             ),
             SizedBox(height: height * 0.010),
             GestureDetector(

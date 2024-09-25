@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/Presentation/SplashScreen/Auth/login_screen.dart';
 import 'package:ecommerce_app/Presentation/SplashScreen/Screens/categories_screen.dart';
 import 'package:ecommerce_app/Presentation/common/product_card.dart';
 import 'package:ecommerce_app/Provider/api_provider.dart';
@@ -45,9 +46,17 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           actions: [
             IconButton(
-                onPressed: () {
+                onPressed: () async {
                   final signOut = FirebaseAuth.instance;
-                  signOut.signOut();
+                  await signOut.signOut().then(
+                        (_) => Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LoginScreen(),
+                          ),
+                          (_) => false,
+                        ),
+                      );
                 },
                 icon: const Icon(Icons.login_outlined))
           ],
