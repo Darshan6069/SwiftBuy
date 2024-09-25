@@ -1,5 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' hide AuthProvider;
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../Provider/signup_provider.dart';
 
 class ForgotPassword extends StatelessWidget {
   ForgotPassword({super.key});
@@ -21,12 +24,15 @@ class ForgotPassword extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              TextButton(
-                onPressed: () async {
-                  await FirebaseAuth.instance.sendPasswordResetEmail(
-                      email: forgotPasswordController.text);
-                },
-                child: const Text("Forgot password"),
+              Consumer<AuthProvider>(
+                builder: (context,value,child) {
+                  return TextButton(
+                    onPressed: () {
+                      value.forgotPassword(forgotPasswordController.text);
+                    },
+                    child: const Text("Forgot password"),
+                  );
+                }
               )
             ],
           ),
