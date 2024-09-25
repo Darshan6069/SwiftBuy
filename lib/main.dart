@@ -1,10 +1,15 @@
+import 'package:ecommerce_app/Infra/CartService/get_product_to_firebase.dart';
+import 'package:ecommerce_app/Presentation/SplashScreen/Screens/product_detail_screen.dart';
 import 'package:ecommerce_app/Presentation/SplashScreen/splash_screen.dart';
 import 'package:ecommerce_app/Provider/api_provider.dart';
 import 'package:ecommerce_app/Provider/signup_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'Presentation/SplashScreen/Auth/Ragistration/ragistration_screen.dart';
 import 'Presentation/SplashScreen/Auth/login_screen.dart';
 import 'Presentation/SplashScreen/Screens/home_screen.dart';
+import 'Presentation/SplashScreen/Tabs/tabs.dart';
+import 'Provider/ProductCartProvider/cart_provider.dart';
 import 'firebase_options.dart';
 import 'package:provider/provider.dart';
 
@@ -23,8 +28,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => AuthProvider(),),
-        ChangeNotifierProvider(create: (context) => ApiProvider(),)
+        ChangeNotifierProvider(
+          create: (context) => AuthProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ApiProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CartProvider(),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -33,8 +45,11 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-    home: const HomeScreen(),
-       // home: const LoginScreen(),
+      // home: const RagistrationScreen(),
+        // home: const HomeScreen(),
+    home: const TabsScreen(),
+       // home: ProductDetailScreen(),
+        //home: SplashScreen(),
       ),
     );
   }

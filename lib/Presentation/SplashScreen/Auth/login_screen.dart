@@ -2,9 +2,10 @@ import 'package:ecommerce_app/Presentation/SplashScreen/Auth/Ragistration/ragist
 import 'package:ecommerce_app/Provider/signup_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../common/Ragistration/button.dart';
-import '../common/Ragistration/textformfeild.dart';
+import '../../common/Ragistration/button.dart';
+import '../../common/Ragistration/common_text.dart';
+import '../../common/Ragistration/google_facebook_Button.dart';
+import '../../common/Ragistration/textformfeild.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -44,38 +45,33 @@ class _LoginScreenState extends State<LoginScreen> {
               style: TextStyle(fontSize: 21),
             ),
             SizedBox(height: height * 0.040),
-            const Text(
-              'Email',
-              style: TextStyle(fontSize: 20),
-            ),
+            CommonText(text: 'Email'),
             TextForm(
               controller: emailNameController,
               hint: 'darshan12@gmail.com',
               Icons: Icons.email_outlined,
             ),
             SizedBox(height: height * 0.020),
-            const Text(
-              'Password',
-              style: TextStyle(fontSize: 20),
-            ),
+            CommonText(text: 'Password'),
             TextForm(
               controller: passWordController,
               hint: '********',
               Icons: Icons.password,
             ),
-            SizedBox(height: height * 0.008),
+            SizedBox(height: height * 0.003),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                TextButton(
-                  onPressed: () {},
-                 child: const Text('Forgot Password',
-                      style: TextStyle(color: Colors.red, fontSize: 20),
+                GestureDetector(
+                  onTap: () {},
+                  child: const Text(
+                    'Forgot Password',
+                    style: TextStyle(color: Colors.red, fontSize: 15),
                   ),
                 ),
               ],
             ),
-             SizedBox(height: height*0.020),
+            SizedBox(height: height * 0.020),
             Consumer<AuthProvider>(builder: (context, value, child) {
               return GestureDetector(
                 onTap: () {
@@ -85,27 +81,33 @@ class _LoginScreenState extends State<LoginScreen> {
                       context: context);
                 },
                 child: Button(
-                  buttonName: 'Login',
-                ),
+                        buttonName: 'Login',
+                      ),
               );
             }),
-            SizedBox(height: height*0.020),
-            Divider(height: height*0.020,color: Colors.black54),
-            ColoredBox(
-              color: Colors.black87,
-              child: CircleAvatar(
-                radius: 30,
-                backgroundColor: Colors.white,
-                backgroundImage: AssetImage('assets/LoginScreen/Google_png.png'),
-              ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Divider(height: height * 0.020, color: Colors.black54),
             ),
-            const SizedBox(height: 20),
+            GestureDetector(
+              onTap: () {},
+              child:
+                  GoogleFacebookButton(image: 'assets/LoginScreen/google.svg'),
+            ),
+            SizedBox(height: height * 0.020),
+            GestureDetector(
+              onTap: () {},
+              child: GoogleFacebookButton(
+                  image: 'assets/LoginScreen/facebook.svg'),
+            ),
+            SizedBox(height: height * 0.020),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text('Don\'t have an account?',
                     style: TextStyle(fontSize: 16)),
-                TextButton(
-                  onPressed: () {
+                GestureDetector(
+                  onTap: () {
                     Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(
                         builder: (context) => RagistrationScreen(),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'Auth/login_screen.dart';
-import 'common/Ragistration/button.dart';
+import '../common/Ragistration/button.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -44,15 +44,18 @@ class _SplashScreenState extends State<SplashScreen> {
               style: TextStyle(fontSize: 16),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: height*0.212),
-            GestureDetector(
-              onTap: () {
-                Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (context) => const LoginScreen()),
-                  (route) => false,
-                );
-              },
-              child: Button(buttonName: 'Get Started',),
+            SizedBox(height: height*0.175),
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(builder: (context) => const LoginScreen()),
+                    (route) => false,
+                  );
+                },
+                child: Button(buttonName: 'Get Started',),
+              ),
             )
           ],
         ),

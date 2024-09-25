@@ -17,8 +17,9 @@ class _TextForm extends State<TextForm> {
     return   TextFormField(
       controller: widget.controller,
       decoration: InputDecoration(
-        prefixIcon: const Icon(Icons.email_outlined),
+        prefixIcon: Icon(widget.Icons),
         hintText: widget.hint,
+        hintStyle: TextStyle(color: Colors.black45),
         border: const OutlineInputBorder(
             borderSide: BorderSide(width: 2),
             borderRadius: BorderRadius.all(Radius.circular(15))),

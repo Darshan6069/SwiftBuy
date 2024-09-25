@@ -12,7 +12,20 @@
           "package_name": "com.ecomme"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "861008742869-771m6279681alpot2papkc4mlnviucp9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ecomme",
+            "certificate_hash": "80563aa028a3079a36c3664b5762de7aff425dd8"
+          }
+        },
+        {
+          "client_id": "861008742869-4q97ff5inc79aglsmbjbqcr8k6fev9gd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyChW5dKUuWg0a_zHB3JA-v5hgtsWsN2pv0"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861008742869-4q97ff5inc79aglsmbjbqcr8k6fev9gd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "861008742869-e32hfdjjcn67ldsvcics0td0uq3ehmjv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ecommerceApp"
+              }
+            }
+          ]
         }
       }
     }

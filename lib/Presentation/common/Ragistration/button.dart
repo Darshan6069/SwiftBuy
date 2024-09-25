@@ -26,7 +26,7 @@ class _ButtonState extends State<Button> {
       height: height*0.08,
       width: width,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(15),
           color: Colors.blue.shade900),
     );
   }
