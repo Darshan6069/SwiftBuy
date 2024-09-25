@@ -27,4 +27,9 @@ class AuthProvider extends ChangeNotifier{
     notifyListeners();
     Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const TabsScreen(),), (route) => false,);
   }
+
+  bool isLogin(){
+    if(FirebaseAuth.instance.currentUser==null)return false;
+    return true;
+  }
 }

@@ -47,7 +47,11 @@ class MyApp extends StatelessWidget {
         ),
       // home: const RagistrationScreen(),
         // home: const HomeScreen(),
-    home: const TabsScreen(),
+    home: Consumer<AuthProvider>(
+      builder: (context,value,child) {
+        return value.isLogin()?const RagistrationScreen():const TabsScreen();
+      }
+    ),
        // home: ProductDetailScreen(),
         //home: SplashScreen(),
       ),
