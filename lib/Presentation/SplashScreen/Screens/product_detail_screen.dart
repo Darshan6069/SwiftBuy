@@ -28,14 +28,14 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             IconButton(
-                onPressed: () {}, icon: Icon(CupertinoIcons.back, size: 30,)),
-            Text('Product Detail'),
+                onPressed: () {}, icon: const Icon(CupertinoIcons.back, size: 30,)),
+            const Text('Product Detail'),
             IconButton(
-                onPressed: () {}, icon: Icon(CupertinoIcons.heart, size: 30,)),
+                onPressed: () {}, icon: const Icon(CupertinoIcons.heart, size: 30,)),
           ],
         ),
         automaticallyImplyLeading: false,
-        actions: [],
+        actions: const [],
       ),
       body: Column(
         children: [

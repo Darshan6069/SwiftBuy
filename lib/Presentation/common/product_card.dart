@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 
 import '../../Domain/ProductModel/product_model.dart';
 import '../../Provider/ProductCartProvider/cart_provider.dart';
-import '../../Provider/api_provider.dart';
 
 class ProductCard extends StatefulWidget {
   const ProductCard(
@@ -77,16 +76,16 @@ class _ProductCardState extends State<ProductCard> {
                                       Icon(
                                         CupertinoIcons.star_fill,
                                         size: 14,
-                                        color: (widget.product.rating!.rate! <=
+                                        color: (widget.product.rating.rate <=
                                                 2)
                                             ? Colors.red
-                                            : (widget.product.rating!.rate! <=
+                                            : (widget.product.rating.rate <=
                                                     3.5)
                                                 ? Colors.orange
                                                 : Colors.green,
                                       ),
                                       Text(
-                                        ' ${widget.product.rating?.rate}',
+                                        ' ${widget.product.rating.rate}',
                                         style: const TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w500),
@@ -138,28 +137,24 @@ class _ProductCardState extends State<ProductCard> {
                               children: [
                                 IconButton(
                                     onPressed: () async {
-                                      if (widget.product.id != null) {
-                                        await value
-                                            .addProductToCart(widget.product);
-                                        if (!context.mounted) return;
-                                        await value.GetProductToCart();
-                                      }
-                                    },
-                                    icon: Icon(CupertinoIcons.plus)),
+                                      await value
+                                          .addProductToCart(widget.product);
+                                      if (!context.mounted) return;
+                                      await value.GetProductToCart();
+                                                                        },
+                                    icon: const Icon(CupertinoIcons.plus)),
                                 Text(
                                   widget.product.quantity.toString(),
-                                  style: TextStyle(fontSize: 20),
+                                  style: const TextStyle(fontSize: 20),
                                 ),
                                 IconButton(
                                     onPressed: () async {
-                                      if (widget.product.id != null) {
-                                        await value
-                                            .DecreaseQnty(widget.product.id.toString());
-                                        if (!context.mounted) return;
-                                        await value.GetProductToCart();
-                                      }
-                                    },
-                                    icon: Icon(CupertinoIcons.minus)),
+                                      await value
+                                          .DecreaseQnty(widget.product.id.toString());
+                                      if (!context.mounted) return;
+                                      await value.GetProductToCart();
+                                                                        },
+                                    icon: const Icon(CupertinoIcons.minus)),
                               ],
                             )
                           ],
@@ -175,13 +170,11 @@ class _ProductCardState extends State<ProductCard> {
                             ),
                             IconButton(
                                 onPressed: () async {
-                                  if (widget.product.id != null) {
-                                    await value
-                                        .DeleteProduct(widget.product.id.toString());
-                                    if (!context.mounted) return;
-                                    await value.GetProductToCart();
-                                  }
-                                },
+                                  await value
+                                      .DeleteProduct(widget.product.id.toString());
+                                  if (!context.mounted) return;
+                                  await value.GetProductToCart();
+                                                                },
                                 icon: const Icon(CupertinoIcons.delete))
                           ],
                         ],

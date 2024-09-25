@@ -34,7 +34,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           : SingleChildScrollView(
             child: Consumer<ApiProvider>(builder: (context, productPro, child) {
               return GridView.builder(
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,

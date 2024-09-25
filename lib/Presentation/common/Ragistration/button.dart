@@ -18,7 +18,7 @@ class _ButtonState extends State<Button> {
       child:  Center(
           child: Text(
             widget.buttonName,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 22,
                 color: Colors.white,
                 fontWeight: FontWeight.w600),

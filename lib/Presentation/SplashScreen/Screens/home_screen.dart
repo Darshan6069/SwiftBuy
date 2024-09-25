@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   final signOut = FirebaseAuth.instance;
                   signOut.signOut();
                 },
-                icon: Icon(Icons.login_outlined))
+                icon: const Icon(Icons.login_outlined))
           ],
         ),
         body: SingleChildScrollView(
@@ -59,11 +59,11 @@ class _HomeScreenState extends State<HomeScreen> {
               width: width,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  image: DecorationImage(
+                  image: const DecorationImage(
                       image: AssetImage('assets/offersimage.jpg'),
                       fit: BoxFit.contain)),
             ),
-            Container(
+            SizedBox(
               height: 60,
               width: width,
               child: Consumer<ApiProvider>(builder: (context, value, child) {
@@ -107,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ]),
             Consumer<ApiProvider>(builder: (context, productPro, child) {
               return GridView.builder(
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,

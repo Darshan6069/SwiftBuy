@@ -21,7 +21,6 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Padding(
@@ -45,14 +44,14 @@ class _LoginScreenState extends State<LoginScreen> {
               style: TextStyle(fontSize: 21),
             ),
             SizedBox(height: height * 0.040),
-            CommonText(text: 'Email'),
+            const CommonText(text: 'Email'),
             TextForm(
               controller: emailNameController,
               hint: 'darshan12@gmail.com',
               Icons: Icons.email_outlined,
             ),
             SizedBox(height: height * 0.020),
-            CommonText(text: 'Password'),
+            const CommonText(text: 'Password'),
             TextForm(
               controller: passWordController,
               hint: '********',
@@ -80,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       password: passWordController.text,
                       context: context);
                 },
-                child: Button(
+                child: const Button(
                         buttonName: 'Login',
                       ),
               );
@@ -92,12 +91,12 @@ class _LoginScreenState extends State<LoginScreen> {
             GestureDetector(
               onTap: () {},
               child:
-                  GoogleFacebookButton(image: 'assets/LoginScreen/google.svg'),
+                  const GoogleFacebookButton(image: 'assets/LoginScreen/google.svg'),
             ),
             SizedBox(height: height * 0.020),
             GestureDetector(
               onTap: () {},
-              child: GoogleFacebookButton(
+              child: const GoogleFacebookButton(
                   image: 'assets/LoginScreen/facebook.svg'),
             ),
             SizedBox(height: height * 0.020),
@@ -110,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onTap: () {
                     Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(
-                        builder: (context) => RagistrationScreen(),
+                        builder: (context) => const RagistrationScreen(),
                       ),
                       (route) => false,
                     );

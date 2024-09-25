@@ -11,11 +11,11 @@ class GetProductToFirebase {
 
 
   Future<List<ProductModel>> getCartProduct()async {
-    final _fireStore = FirebaseFirestore.instance;
-    final _userId  = FirebaseAuth.instance.currentUser?.uid;
+    final fireStore = FirebaseFirestore.instance;
+    final userId  = FirebaseAuth.instance.currentUser?.uid;
    cartProductList = [];
 
-    final cartRef = await _fireStore.collection(FireStoreCollection.cart).doc(_userId).get();
+    final cartRef = await fireStore.collection(FireStoreCollection.cart).doc(userId).get();
     final productList = await cartRef.data()?['products'];
 
     for(var product in productList){

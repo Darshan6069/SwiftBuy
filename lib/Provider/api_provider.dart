@@ -11,7 +11,6 @@ class ApiProvider with ChangeNotifier {
   List<ProductModel> productDataList=[];
   List<ProductModel> productByCategoriesData=[];
 
-
   Future<void> CategoryApi() async {
 
     categoriesDataList = await ApiService.getAllCategories();

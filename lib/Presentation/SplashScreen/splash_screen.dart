@@ -54,7 +54,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     (route) => false,
                   );
                 },
-                child: Button(buttonName: 'Get Started',),
+                child: const Button(buttonName: 'Get Started',),
               ),
             )
           ],

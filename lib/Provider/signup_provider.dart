@@ -8,7 +8,6 @@ import '../Infra/AuthService/auth_service.dart';
 class AuthProvider extends ChangeNotifier{
 
   late UserCredential userCredential;
-  final _fireStore = FirebaseFirestore.instance;
 
 
 
@@ -17,7 +16,7 @@ class AuthProvider extends ChangeNotifier{
        userCredential = await AuthService().SignUpWithEmail(email: email, password: password);
        //setLoading(false);
        notifyListeners();
-       Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => TabsScreen(),), (route) => false,);
+       Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const TabsScreen(),), (route) => false,);
   }
 
 
@@ -26,6 +25,6 @@ class AuthProvider extends ChangeNotifier{
     userCredential = await AuthService.LoginWithEmail(email: email, password: password);
     //setLoading(false);
     notifyListeners();
-    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => TabsScreen(),), (route) => false,);
+    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const TabsScreen(),), (route) => false,);
   }
 }

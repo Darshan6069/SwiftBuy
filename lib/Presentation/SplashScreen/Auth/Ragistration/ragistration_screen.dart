@@ -48,21 +48,21 @@ class _RagistrationScreenState extends State<RagistrationScreen> {
               style: TextStyle(fontSize: 21),
             ),
             SizedBox(height: height * 0.030),
-            CommonText(text: 'Full Name'),
+            const CommonText(text: 'Full Name'),
             TextForm(
               controller: nameController,
               hint: 'Savaliya Darshan',
               Icons: CupertinoIcons.person,
             ),
             SizedBox(height: height * 0.008),
-            CommonText(text: 'Email'),
+            const CommonText(text: 'Email'),
             TextForm(
               controller: emailControler,
               hint: 'darshan12@gmail.com',
               Icons: Icons.email_outlined,
             ),
             SizedBox(height: height * 0.009),
-            CommonText(text: 'Password'),
+            const CommonText(text: 'Password'),
             TextForm(
               controller: passWordController,
               hint: '********',
@@ -90,7 +90,7 @@ class _RagistrationScreenState extends State<RagistrationScreen> {
                       password: passWordController.text,
                       context: context);
                 },
-                child: Button(
+                child: const Button(
                   buttonName: 'SignUp',
                 ),
               );
@@ -102,12 +102,12 @@ class _RagistrationScreenState extends State<RagistrationScreen> {
             GestureDetector(
               onTap: () {},
               child:
-                  GoogleFacebookButton(image: 'assets/LoginScreen/google.svg'),
+                  const GoogleFacebookButton(image: 'assets/LoginScreen/google.svg'),
             ),
             SizedBox(height: height * 0.010),
             GestureDetector(
               onTap: () {},
-              child: GoogleFacebookButton(
+              child: const GoogleFacebookButton(
                   image: 'assets/LoginScreen/facebook.svg'),
             ),
             SizedBox(height: height * 0.010),
@@ -120,7 +120,7 @@ class _RagistrationScreenState extends State<RagistrationScreen> {
                   onTap: () {
                     Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(
-                        builder: (context) => LoginScreen(),
+                        builder: (context) => const LoginScreen(),
                       ),
                       (route) => false,
                     );

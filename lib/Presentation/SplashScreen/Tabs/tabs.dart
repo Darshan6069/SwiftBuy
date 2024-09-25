@@ -18,7 +18,7 @@ class _TabsScreenState extends State<TabsScreen> {
   Widget build(BuildContext context) {
     return CupertinoTabScaffold(
       tabBar: CupertinoTabBar(
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.home),
             label: 'Home',
@@ -40,15 +40,15 @@ class _TabsScreenState extends State<TabsScreen> {
       tabBuilder: (context, index) {
         switch (index) {
           case 0:
-            return CupertinoTabView(builder: (context) => HomeScreen());
+            return CupertinoTabView(builder: (context) => const HomeScreen());
           case 1:
-            return CupertinoTabView(builder: (context) => CategoriesScreen(iD: 'electronics',));
+            return CupertinoTabView(builder: (context) => const CategoriesScreen(iD: 'electronics',));
           case 2:
-            return CupertinoTabView(builder: (context) => CartScreen());
+            return CupertinoTabView(builder: (context) => const CartScreen());
           case 3:
-            return CupertinoTabView(builder: (context) => ProfileScreen());
+            return CupertinoTabView(builder: (context) => const ProfileScreen());
           default:
-            return Text('data');
+            return const Text('data');
         }
       },
     );

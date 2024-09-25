@@ -19,7 +19,7 @@ class _TextForm extends State<TextForm> {
       decoration: InputDecoration(
         prefixIcon: Icon(widget.Icons),
         hintText: widget.hint,
-        hintStyle: TextStyle(color: Colors.black45),
+        hintStyle: const TextStyle(color: Colors.black45),
         border: const OutlineInputBorder(
             borderSide: BorderSide(width: 2),
             borderRadius: BorderRadius.all(Radius.circular(15))),
