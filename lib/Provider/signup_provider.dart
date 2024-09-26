@@ -49,4 +49,5 @@ class AuthProvider extends ChangeNotifier {
   Future<void> forgotPassword(String forgotPassword) async {
     await FirebaseAuth.instance.sendPasswordResetEmail(email: forgotPassword);
   }
+
 }

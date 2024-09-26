@@ -8,34 +8,48 @@ import '../../Infra/CartService/get_product_to_firebase.dart';
 class CartProvider with ChangeNotifier {
   bool isLoading = false;
   List<ProductModel>  cartProductList=[];
+   double totalCartProductValue =0;
 
-  void setLoading(bool val) {
+  void loding(bool val) {
     isLoading = val;
   }
 
   Future<void> addProductToCart(ProductModel product) async {
     await AddProductCart.addProductToCart(product);
+    totalOfItem();
     notifyListeners();
   }
 
   Future<void> GetProductToCart() async {
-    setLoading(true);
+    loding(true);
     cartProductList = await GetProductToFirebase().getCartProduct();
-    setLoading(false);
+    totalOfItem();
+    loding(false);
     notifyListeners();
   }
 
   Future<void> DeleteProduct(String productId) async {
-    setLoading(true);
+    loding(true);
     await DeletProductToCart.deleteProductFromCart(productId);
-    setLoading(false);
+    loding(false);
+    totalOfItem();
     notifyListeners();
   }
 
   Future<void> DecreaseQnty(String productId) async {
-    setLoading(true);
+    loding(true);
     await DeletProductToCart.DecreaseQnt(productId);
-    setLoading(false);
+    totalOfItem();
+    loding(false);
     notifyListeners();
+  }
+
+  void totalOfItem() {
+    totalCartProductValue =0;
+    for (var element in cartProductList) {
+      double productVal = double.parse(element.quantity.toString()) *
+          double.parse(element.price.toString());
+      totalCartProductValue = totalCartProductValue + productVal;
+    }
   }
 }

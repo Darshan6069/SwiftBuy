@@ -60,6 +60,9 @@ class _CartScreenState extends State<CartScreen> {
                         },
                       );
               }),
+              Consumer<CartProvider>(builder: (context, value, child) {
+                return Text(value.totalCartProductValue.toStringAsFixed(2));
+              })
             ],
           ),
         )));
