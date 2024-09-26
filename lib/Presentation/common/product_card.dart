@@ -48,8 +48,7 @@ class _ProductCardState extends State<ProductCard> {
                             width: MediaQuery.sizeOf(context).width,
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                  image:
-                                      NetworkImage(widget.product.image),
+                                  image: NetworkImage(widget.product.image),
                                   fit: BoxFit.contain),
                               borderRadius: BorderRadius.circular(20),
                             ),
@@ -76,8 +75,7 @@ class _ProductCardState extends State<ProductCard> {
                                       Icon(
                                         CupertinoIcons.star_fill,
                                         size: 14,
-                                        color: (widget.product.rating.rate <=
-                                                2)
+                                        color: (widget.product.rating.rate <= 2)
                                             ? Colors.red
                                             : (widget.product.rating.rate <=
                                                     3.5)
@@ -97,10 +95,12 @@ class _ProductCardState extends State<ProductCard> {
                                   // backgroundColor: value.getTheme == true ?  Colors.black87 : Colors.white54,
                                   radius: height * 0.020,
                                   child: Center(
-                                      child: IconButton(
-                                          icon: const Icon(CupertinoIcons.heart,
-                                              size: 22),
-                                          onPressed: () {})),
+                                    child: IconButton(
+                                      icon: const Icon(CupertinoIcons.heart,
+                                          size: 22),
+                                      onPressed: () {},
+                                    ),
+                                  ),
                                 )
                               ],
                             ),
@@ -123,62 +123,75 @@ class _ProductCardState extends State<ProductCard> {
                       style: const TextStyle(fontSize: 14),
                     ),
                     Consumer<CartProvider>(builder: (context, value, child) {
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            '\$ ${widget.product.price}',
-                            style: const TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.w600),
-                          ),
-                          if (widget.showDeleteIcon) ...[
-                            Row(
+                      return value.isLoading
+                          ? const CircularProgressIndicator()
+                          : Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                IconButton(
-                                    onPressed: () async {
-                                      await value
-                                          .addProductToCart(widget.product);
-                                      if (!context.mounted) return;
-                                      await value.GetProductToCart();
-                                                                        },
-                                    icon: const Icon(CupertinoIcons.plus)),
                                 Text(
-                                  widget.product.quantity.toString(),
-                                  style: const TextStyle(fontSize: 20),
+                                  '\$ ${widget.product.price}',
+                                  style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600),
                                 ),
-                                IconButton(
-                                    onPressed: () async {
-                                      await value
-                                          .DecreaseQnty(widget.product.id.toString());
-                                      if (!context.mounted) return;
-                                      await value.GetProductToCart();
-                                                                        },
-                                    icon: const Icon(CupertinoIcons.minus)),
+                                if (widget.showDeleteIcon) ...[
+                                  Row(
+                                    children: [
+                                      IconButton(
+                                          onPressed: () async {
+                                            await Provider.of<CartProvider>(
+                                                    context,
+                                                    listen: false)
+                                                .addProductToCart(
+                                                    widget.product);
+                                            if (!context.mounted) return;
+                                            await Provider.of<CartProvider>(
+                                                    context,
+                                                    listen: false)
+                                                .GetProductToCart();
+                                          },
+                                          icon:
+                                              const Icon(CupertinoIcons.plus)),
+                                      Text(
+                                        widget.product.quantity.toString(),
+                                        style: const TextStyle(fontSize: 20),
+                                      ),
+                                      IconButton(
+                                          onPressed: () async {
+                                            await value.DecreaseQnty(
+                                                widget.product.id.toString());
+                                            if (!context.mounted) return;
+                                            await value.GetProductToCart();
+                                          },
+                                          icon:
+                                              const Icon(CupertinoIcons.minus)),
+                                    ],
+                                  )
+                                ],
+                                if (!widget.showDeleteIcon)
+                                  IconButton(
+                                      onPressed: () async {
+                                        await value
+                                            .addProductToCart(widget.product);
+                                      },
+                                      icon: const Icon(CupertinoIcons.cart)),
+                                if (widget.showDeleteIcon) ...[
+                                  SizedBox(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.01,
+                                  ),
+                                  IconButton(
+                                      onPressed: () async {
+                                        await value.DeleteProduct(
+                                            widget.product.id.toString());
+                                        if (!context.mounted) return;
+                                        await value.GetProductToCart();
+                                      },
+                                      icon: const Icon(CupertinoIcons.delete))
+                                ],
                               ],
-                            )
-                          ],
-                          if (!widget.showDeleteIcon)
-                            IconButton(
-                                onPressed: () async {
-                                  await value.addProductToCart(widget.product);
-                                },
-                                icon: const Icon(CupertinoIcons.cart)),
-                          if (widget.showDeleteIcon) ...[
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.01,
-                            ),
-                            IconButton(
-                                onPressed: () async {
-                                  await value
-                                      .DeleteProduct(widget.product.id.toString());
-                                  if (!context.mounted) return;
-                                  await value.GetProductToCart();
-                                                                },
-                                icon: const Icon(CupertinoIcons.delete))
-                          ],
-                        ],
-                      );
+                            );
                     }),
                   ],
                 ),

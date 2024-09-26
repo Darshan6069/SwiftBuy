@@ -6,7 +6,7 @@ import '../../fire_store_collection.dart';
 class AuthService {
   final _fireStore = FirebaseFirestore.instance;
 
-  Future<UserCredential> SignUpWithEmail(
+  Future<UserCredential> signUpWithEmail(
       {required String email, required String password}) async {
     final FirebaseAuth auth = FirebaseAuth.instance;
     final userCredential = await auth.createUserWithEmailAndPassword(
@@ -30,7 +30,7 @@ class AuthService {
     return userCredential;
   }
 
-  static Future<UserCredential> LoginWithEmail(
+  static Future<UserCredential> loginWithEmail(
       {required String email, required String password}) async {
     final FirebaseAuth auth = FirebaseAuth.instance;
     final userCredential =

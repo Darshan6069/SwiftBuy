@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,24 +14,24 @@ class CategoriesScreen extends StatefulWidget {
 }
 
 class _CategoriesScreenState extends State<CategoriesScreen> {
-
   bool isLoad = false;
   @override
   void initState() {
     super.initState();
-    Provider.of<ApiProvider>(context,listen: false).ProductByCategories(Id: widget.iD);
+    Provider.of<ApiProvider>(context, listen: false)
+        .ProductByCategories(Id: widget.iD);
   }
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
+    var height = context.screenHeight(context);
 
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(),
       body: (isLoad == true)
           ? const CircularProgressIndicator()
-          : SingleChildScrollView(
-            child: Consumer<ApiProvider>(builder: (context, productPro, child) {
+          : SingleChildScrollView(child:
+              Consumer<ApiProvider>(builder: (context, productPro, child) {
               return GridView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
@@ -41,10 +42,11 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                       mainAxisSpacing: 8),
                   itemCount: productPro.productByCategoriesData.length,
                   itemBuilder: (context, index) {
-                    return ProductCard(product: productPro.productByCategoriesData[index],);
+                    return ProductCard(
+                      product: productPro.productByCategoriesData[index],
+                    );
                   });
-            })
-          ),
+            })),
     );
   }
 }

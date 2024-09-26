@@ -37,13 +37,14 @@ class _CartScreenState extends State<CartScreen> {
           title: const Text('Cart',
               style: TextStyle(color: Colors.white, fontSize: 20)),
         ),
-        body: SingleChildScrollView(
-            child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Consumer<CartProvider>(builder: (context, value, index) {
-                return value.isLoading
+        body: Consumer<CartProvider>(builder: (context, value, index) {
+          return SingleChildScrollView(
+              child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                value.isLoading
                     ? const Center(
                         child: CircularProgressIndicator(),
                       )
@@ -58,10 +59,24 @@ class _CartScreenState extends State<CartScreen> {
                             showDeleteIcon: true,
                           );
                         },
-                      );
-              }),
-            ],
-          ),
-        )));
+                      ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text("Total"),
+                    Row(
+                      children: [
+                        const Text("Rs."),
+                        Text(
+                          value.cartValue.toStringAsFixed(2)
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ],
+            ),
+          ));
+        }));
   }
 }
