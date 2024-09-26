@@ -41,13 +41,17 @@ class CartProvider with ChangeNotifier {
     setLoading(true);
     await DeletProductToCart.deleteProductFromCart(productId);
     setLoading(false);
+    
     notifyListeners();
   }
 
   Future<void> DecreaseQnty(String productId) async {
     setLoading(true);
     await DeletProductToCart.DecreaseQnt(productId);
+    
     setLoading(false);
     notifyListeners();
   }
+
+
 }
