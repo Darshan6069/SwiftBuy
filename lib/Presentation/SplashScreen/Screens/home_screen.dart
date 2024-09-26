@@ -20,7 +20,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     Provider.of<ApiProvider>(context, listen: false).CategoryApi();
     Provider.of<ApiProvider>(context, listen: false).ProductApi();
     super.initState();

@@ -17,7 +17,6 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   bool isLoad = false;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     Provider.of<ApiProvider>(context,listen: false).ProductByCategories(Id: widget.iD);
   }
@@ -25,7 +24,6 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
 
     return  Scaffold(
       appBar: AppBar(),

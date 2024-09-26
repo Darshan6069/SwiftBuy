@@ -18,10 +18,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         .of(context)
         .size
         .height;
-    var width = MediaQuery
-        .of(context)
-        .size
-        .width;
+
     return Scaffold(
       appBar: AppBar(
         title: Row(

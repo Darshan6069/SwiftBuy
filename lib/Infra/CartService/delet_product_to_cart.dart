@@ -15,7 +15,6 @@ class DeletProductToCart {
 
     final currentProducts = await cartRef.get();
     List<dynamic> currentProductList = await currentProducts.data() ?['products'] ?? [];
-    print(currentProductList);
      List<ProductModel> productList = currentProductList.map((e) => ProductModel.fromJson(e)).toList();
 
     productList.removeWhere((e)=>(productId==e.id.toString()));

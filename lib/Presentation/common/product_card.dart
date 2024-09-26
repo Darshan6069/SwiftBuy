@@ -49,7 +49,7 @@ class _ProductCardState extends State<ProductCard> {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                   image:
-                                      NetworkImage(widget.product.image ?? ''),
+                                      NetworkImage(widget.product.image),
                                   fit: BoxFit.contain),
                               borderRadius: BorderRadius.circular(20),
                             ),
@@ -110,14 +110,14 @@ class _ProductCardState extends State<ProductCard> {
                     ),
                     SizedBox(height: height * .01),
                     Text(
-                      widget.product.category ?? "",
+                      widget.product.category,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 3,
                       style: const TextStyle(
                           fontWeight: FontWeight.w500, fontSize: 16),
                     ),
                     Text(
-                      widget.product.title ?? "",
+                      widget.product.title,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
                       style: const TextStyle(fontSize: 14),
