@@ -14,10 +14,33 @@ class TabsScreen extends StatefulWidget {
 }
 
 class _TabsScreenState extends State<TabsScreen> {
+  int _currentIndex = 0;
+
+  Widget _returnBody() {
+    switch (_currentIndex) {
+      case 0:
+        return const HomeScreen();
+      case 1:
+        return const CategoriesScreen(
+          iD: 'electronics',
+        );
+      case 2:
+        return const CartScreen();
+      case 3:
+        return const ProfileScreen();
+      default:
+        return const Text('data');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return CupertinoTabScaffold(
-      tabBar: CupertinoTabBar(
+    return Scaffold(
+      body: _returnBody(),
+      bottomNavigationBar: BottomNavigationBar(
+        unselectedItemColor: Colors.black,
+        currentIndex: _currentIndex,
+        selectedItemColor: Colors.red,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.home),
@@ -36,21 +59,12 @@ class _TabsScreenState extends State<TabsScreen> {
             label: 'Profile',
           ),
         ],
+        onTap: (value) {
+          setState(() {
+            _currentIndex = value;
+          });
+        },
       ),
-      tabBuilder: (context, index) {
-        switch (index) {
-          case 0:
-            return CupertinoTabView(builder: (context) => const HomeScreen());
-          case 1:
-            return CupertinoTabView(builder: (context) => const CategoriesScreen(iD: 'electronics',));
-          case 2:
-            return CupertinoTabView(builder: (context) => const CartScreen());
-          case 3:
-            return CupertinoTabView(builder: (context) => const ProfileScreen());
-          default:
-            return const Text('data');
-        }
-      },
     );
   }
 }
