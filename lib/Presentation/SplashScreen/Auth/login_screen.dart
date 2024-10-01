@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/Core/extension.dart';
 import 'package:ecommerce_app/Presentation/SplashScreen/Auth/Ragistration/ragistration_screen.dart';
 import 'package:ecommerce_app/Provider/signup_provider.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Padding(
@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             SizedBox(
-              height: height * 0.090,
+              height: context.screenHeight(context) * 0.090,
             ),
             const Text(
               'Hi, Welcome! 👋',
@@ -38,26 +38,26 @@ class _LoginScreenState extends State<LoginScreen> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: height * 0.022),
+            SizedBox(height: context.screenHeight(context) * 0.022),
             const Text(
               'Log in to Mono and experience a faster,\neasier way to send and receive money.',
               style: TextStyle(fontSize: 21),
             ),
-            SizedBox(height: height * 0.040),
+            SizedBox(height: context.screenHeight(context) * 0.040),
             const CommonText(text: 'Email'),
             TextForm(
               controller: emailNameController,
               hint: 'darshan12@gmail.com',
               Icons: Icons.email_outlined,
             ),
-            SizedBox(height: height * 0.020),
+            SizedBox(height: context.screenHeight(context) * 0.020),
             const CommonText(text: 'Password'),
             TextForm(
               controller: passWordController,
               hint: '********',
               Icons: Icons.password,
             ),
-            SizedBox(height: height * 0.003),
+            SizedBox(height: context.screenHeight(context) * 0.003),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -70,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ],
             ),
-            SizedBox(height: height * 0.020),
+            SizedBox(height: context.screenHeight(context) * 0.020),
             Consumer<AuthProvider>(builder: (context, value, child) {
               return GestureDetector(
                 onTap: () {
@@ -86,20 +86,20 @@ class _LoginScreenState extends State<LoginScreen> {
             }),
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Divider(height: height * 0.020, color: Colors.black54),
+              child: Divider(height: context.screenHeight(context) * 0.020, color: Colors.black54),
             ),
             GestureDetector(
               onTap: () {},
               child:
                   const GoogleFacebookButton(image: 'assets/LoginScreen/google.svg'),
             ),
-            SizedBox(height: height * 0.020),
+            SizedBox(height: context.screenHeight(context) * 0.020),
             GestureDetector(
               onTap: () {},
               child: const GoogleFacebookButton(
                   image: 'assets/LoginScreen/facebook.svg'),
             ),
-            SizedBox(height: height * 0.020),
+            SizedBox(height: context.screenHeight(context) * 0.020),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

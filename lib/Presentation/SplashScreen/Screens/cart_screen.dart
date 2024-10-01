@@ -1,9 +1,12 @@
+import 'package:ecommerce_app/Core/extension.dart';
+import 'package:ecommerce_app/Presentation/common/Ragistration/button.dart';
 import 'package:ecommerce_app/Presentation/common/product_card.dart';
+import 'package:ecommerce_app/Provider/razorpay_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../Provider/ProductCartProvider/cart_provider.dart';
+import '../../../Provider/cart_provider.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
@@ -40,10 +43,10 @@ class _CartScreenState extends State<CartScreen> {
         body: SingleChildScrollView(
             child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Consumer<CartProvider>(builder: (context, value, index) {
-                return value.isLoading
+          child: Consumer<CartProvider>(builder: (context, value, child) {
+            return Column(
+              children: [
+                value.isLoading
                     ? const Center(
                         child: CircularProgressIndicator(),
                       )
@@ -58,13 +61,26 @@ class _CartScreenState extends State<CartScreen> {
                             showDeleteIcon: true,
                           );
                         },
-                      );
-              }),
-              Consumer<CartProvider>(builder: (context, value, child) {
-                return Text(value.totalCartProductValue.toStringAsFixed(2));
-              })
-            ],
-          ),
+                      ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Total Price'),
+                    Text(value.totalCartProductValue.toStringAsFixed(2)),
+                  ],
+                ),
+                SizedBox(height: context.screenHeight(context) * 0.015),
+                Consumer<RazorpayProvider>(builder: (context, pay, child) {
+                  return GestureDetector(
+                    onTap: () {
+                      pay.getPayment(orderValue: value.totalCartProductValue);
+                    },
+                    child: const Button(buttonName: 'Place Order'),
+                  );
+                })
+              ],
+            );
+          }),
         )));
   }
 }

@@ -1,10 +1,11 @@
 import 'package:ecommerce_app/Provider/api_provider.dart';
+import 'package:ecommerce_app/Provider/razorpay_provider.dart';
 import 'package:ecommerce_app/Provider/signup_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'Presentation/SplashScreen/Auth/Ragistration/ragistration_screen.dart';
 import 'Presentation/SplashScreen/Tabs/tabs.dart';
-import 'Provider/ProductCartProvider/cart_provider.dart';
+import 'Provider/cart_provider.dart';
 import 'firebase_options.dart';
 import 'package:provider/provider.dart';
 
@@ -32,6 +33,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => CartProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => RazorpayProvider(),
+        )
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

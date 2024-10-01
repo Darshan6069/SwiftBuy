@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/Core/extension.dart';
 import 'package:ecommerce_app/Provider/signup_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,6 @@ class _RagistrationScreenState extends State<RagistrationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Padding(
@@ -33,7 +33,7 @@ class _RagistrationScreenState extends State<RagistrationScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             SizedBox(
-              height: height * 0.090,
+              height: context.screenHeight(context) * 0.090,
             ),
             const Text(
               'Create an account',
@@ -42,33 +42,33 @@ class _RagistrationScreenState extends State<RagistrationScreen> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: height * 0.022),
+            SizedBox(height: context.screenHeight(context) * 0.022),
             const Text(
               'Create an account to manage your\nmoney transfer with Mono. ',
               style: TextStyle(fontSize: 21),
             ),
-            SizedBox(height: height * 0.030),
+            SizedBox(height: context.screenHeight(context) * 0.030),
             const CommonText(text: 'Full Name'),
             TextForm(
               controller: nameController,
               hint: 'Savaliya Darshan',
               Icons: CupertinoIcons.person,
             ),
-            SizedBox(height: height * 0.008),
+            SizedBox(height: context.screenHeight(context) * 0.008),
             const CommonText(text: 'Email'),
             TextForm(
               controller: emailControler,
               hint: 'darshan12@gmail.com',
               Icons: Icons.email_outlined,
             ),
-            SizedBox(height: height * 0.009),
+            SizedBox(height: context.screenHeight(context) * 0.009),
             const CommonText(text: 'Password'),
             TextForm(
               controller: passWordController,
               hint: '********',
               Icons: Icons.password,
             ),
-            SizedBox(height: height * 0.002),
+            SizedBox(height: context.screenHeight(context) * 0.002),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -86,7 +86,7 @@ class _RagistrationScreenState extends State<RagistrationScreen> {
                 ),
               ],
             ),
-            SizedBox(height: height * 0.010),
+            SizedBox(height: context.screenHeight(context) * 0.010),
             Consumer<AuthProvider>(builder: (context, value, child) {
               return GestureDetector(
                 onTap: () {
@@ -102,20 +102,20 @@ class _RagistrationScreenState extends State<RagistrationScreen> {
             }),
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Divider(height: height * 0.020, color: Colors.black54),
+              child: Divider(height: context.screenHeight(context) * 0.020, color: Colors.black54),
             ),
             GestureDetector(
               onTap: () {},
               child: const GoogleFacebookButton(
                   image: 'assets/LoginScreen/google.svg'),
             ),
-            SizedBox(height: height * 0.010),
+            SizedBox(height: context.screenHeight(context) * 0.010),
             GestureDetector(
               onTap: () {},
               child: const GoogleFacebookButton(
                   image: 'assets/LoginScreen/facebook.svg'),
             ),
-            SizedBox(height: height * 0.010),
+            SizedBox(height: context.screenHeight(context) * 0.010),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

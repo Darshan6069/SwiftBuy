@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/Core/extension.dart';
 import 'package:ecommerce_app/Domain/ProductModel/product_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,10 +15,7 @@ class ProductDetailScreen extends StatefulWidget {
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery
-        .of(context)
-        .size
-        .height;
+
 
     return Scaffold(
       appBar: AppBar(
@@ -39,7 +37,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           Padding(
             padding: const EdgeInsets.all(18.0),
             child: Container(
-              height: height * 0.45,
+              height: context.screenHeight(context) * 0.45,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(40),
                   color: Colors.red

@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/Core/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -23,7 +24,6 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
 
     return  Scaffold(
       appBar: AppBar(),
@@ -37,7 +37,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       crossAxisSpacing: 8,
-                      mainAxisExtent: height * 0.359,
+                      mainAxisExtent: context.screenHeight(context) * 0.359,
                       mainAxisSpacing: 8),
                   itemCount: productPro.productByCategoriesData.length,
                   itemBuilder: (context, index) {

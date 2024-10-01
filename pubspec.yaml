@@ -45,7 +45,7 @@ dependencies:
   icons_launcher:
   cloud_firestore:
   flutter_svg:
-  
+  razorpay_flutter:
   
 
 dev_dependencies:

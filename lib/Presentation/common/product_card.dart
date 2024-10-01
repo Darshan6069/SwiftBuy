@@ -1,9 +1,10 @@
+import 'package:ecommerce_app/Core/extension.dart';
+import 'package:ecommerce_app/Presentation/SplashScreen/Auth/login_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../Domain/ProductModel/product_model.dart';
-import '../../Provider/ProductCartProvider/cart_provider.dart';
+import '../../Provider/cart_provider.dart';
 
 class ProductCard extends StatefulWidget {
   const ProductCard(
@@ -19,8 +20,7 @@ class ProductCard extends StatefulWidget {
 class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
+
     return Padding(
         padding: const EdgeInsets.all(10.0),
         child: Container(
@@ -44,12 +44,11 @@ class _ProductCardState extends State<ProductCard> {
                       child: Stack(
                         children: [
                           Container(
-                            height: height * .18,
+                            height: context.screenHeight(context) * .18,
                             width: MediaQuery.sizeOf(context).width,
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                  image:
-                                      NetworkImage(widget.product.image),
+                                  image: NetworkImage(widget.product.image),
                                   fit: BoxFit.contain),
                               borderRadius: BorderRadius.circular(20),
                             ),
@@ -63,8 +62,8 @@ class _ProductCardState extends State<ProductCard> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Container(
-                                  height: height * 0.020,
-                                  width: width * 0.11,
+                                  height: context.screenHeight(context) * 0.020,
+                                  width: context.screenWidth(context) * 0.11,
                                   decoration: BoxDecoration(
                                       // color:value.getTheme == true ?  Colors.black87 : Colors.white70,
                                       borderRadius: BorderRadius.circular(5)),
@@ -76,8 +75,7 @@ class _ProductCardState extends State<ProductCard> {
                                       Icon(
                                         CupertinoIcons.star_fill,
                                         size: 14,
-                                        color: (widget.product.rating.rate <=
-                                                2)
+                                        color: (widget.product.rating.rate <= 2)
                                             ? Colors.red
                                             : (widget.product.rating.rate <=
                                                     3.5)
@@ -95,7 +93,7 @@ class _ProductCardState extends State<ProductCard> {
                                 ),
                                 CircleAvatar(
                                   // backgroundColor: value.getTheme == true ?  Colors.black87 : Colors.white54,
-                                  radius: height * 0.020,
+                                  radius: context.screenHeight(context) * 0.020,
                                   child: Center(
                                       child: IconButton(
                                           icon: const Icon(CupertinoIcons.heart,
@@ -108,7 +106,7 @@ class _ProductCardState extends State<ProductCard> {
                         ],
                       ),
                     ),
-                    SizedBox(height: height * .01),
+                    SizedBox(height: context.screenHeight(context) * .01),
                     Text(
                       widget.product.category,
                       overflow: TextOverflow.ellipsis,
@@ -141,7 +139,7 @@ class _ProductCardState extends State<ProductCard> {
                                           .addProductToCart(widget.product);
                                       if (!context.mounted) return;
                                       await value.GetProductToCart();
-                                                                        },
+                                    },
                                     icon: const Icon(CupertinoIcons.plus)),
                                 Text(
                                   widget.product.quantity.toString(),
@@ -149,11 +147,11 @@ class _ProductCardState extends State<ProductCard> {
                                 ),
                                 IconButton(
                                     onPressed: () async {
-                                      await value
-                                          .DecreaseQnty(widget.product.id.toString());
+                                      await value.DecreaseQnty(
+                                          widget.product.id.toString());
                                       if (!context.mounted) return;
                                       await value.GetProductToCart();
-                                                                        },
+                                    },
                                     icon: const Icon(CupertinoIcons.minus)),
                               ],
                             )
@@ -170,11 +168,11 @@ class _ProductCardState extends State<ProductCard> {
                             ),
                             IconButton(
                                 onPressed: () async {
-                                  await value
-                                      .DeleteProduct(widget.product.id.toString());
+                                  await value.DeleteProduct(
+                                      widget.product.id.toString());
                                   if (!context.mounted) return;
                                   await value.GetProductToCart();
-                                                                },
+                                },
                                 icon: const Icon(CupertinoIcons.delete))
                           ],
                         ],

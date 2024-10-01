@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/Core/extension.dart';
 import 'package:ecommerce_app/Presentation/SplashScreen/Auth/login_screen.dart';
 import 'package:ecommerce_app/Presentation/SplashScreen/Screens/categories_screen.dart';
 import 'package:ecommerce_app/Presentation/common/product_card.dart';
@@ -27,8 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
+
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
@@ -63,8 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
         body: SingleChildScrollView(
           child: Column(children: [
             Container(
-              height: height * 0.20,
-              width: width,
+              height: context.screenHeight(context) * 0.20,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   image: const DecorationImage(
@@ -73,7 +72,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SizedBox(
               height: 60,
-              width: width,
               child: Consumer<ApiProvider>(builder: (context, value, child) {
                 return ListView.builder(
                   scrollDirection: Axis.horizontal,
@@ -120,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       crossAxisSpacing: 8,
-                      mainAxisExtent: height * 0.359,
+                      mainAxisExtent: context.screenHeight(context) * 0.359,
                       mainAxisSpacing: 8),
                   itemCount: productPro.productDataList.length,
                   itemBuilder: (context, index) {

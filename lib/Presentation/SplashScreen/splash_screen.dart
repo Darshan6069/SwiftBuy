@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/Core/extension.dart';
 import 'package:flutter/material.dart';
 
 import 'Auth/login_screen.dart';
@@ -13,15 +14,13 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Center(
         child: Column(
           children: [
             Container(
-              height: height*0.4,
-              width: width,
+              height: context.screenHeight(context)*0.4,
               decoration: const BoxDecoration(
                   color: Colors.red,
                   image: DecorationImage(
@@ -29,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       fit: BoxFit.cover)),
             ),
             SizedBox(
-              height: height*0.19,
+              height: context.screenHeight(context)*0.19,
             ),
             const Text(
               'MarketKy',
@@ -44,7 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
               style: TextStyle(fontSize: 16),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: height*0.175),
+            SizedBox(height: context.screenHeight(context)*0.175),
             Padding(
               padding: const EdgeInsets.all(18.0),
               child: GestureDetector(

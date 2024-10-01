@@ -14,10 +14,22 @@ class TabsScreen extends StatefulWidget {
 }
 
 class _TabsScreenState extends State<TabsScreen> {
+  int _currentIndex = 0;
+  final List<Widget> _pages = [
+    const HomeScreen(),
+    const CategoriesScreen(iD: 'electronics',),
+    const CartScreen(),
+    const ProfileScreen()
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return CupertinoTabScaffold(
-      tabBar: CupertinoTabBar(
+    return Scaffold(
+      body: _pages[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        unselectedItemColor: Colors.black38,
+        currentIndex: _currentIndex,
+        selectedItemColor: Colors.black,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.home),
@@ -36,21 +48,12 @@ class _TabsScreenState extends State<TabsScreen> {
             label: 'Profile',
           ),
         ],
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
       ),
-      tabBuilder: (context, index) {
-        switch (index) {
-          case 0:
-            return CupertinoTabView(builder: (context) => const HomeScreen());
-          case 1:
-            return CupertinoTabView(builder: (context) => const CategoriesScreen(iD: 'electronics',));
-          case 2:
-            return CupertinoTabView(builder: (context) => const CartScreen());
-          case 3:
-            return CupertinoTabView(builder: (context) => const ProfileScreen());
-          default:
-            return const Text('data');
-        }
-      },
     );
   }
 }
