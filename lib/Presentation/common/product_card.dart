@@ -22,7 +22,7 @@ class _ProductCardState extends State<ProductCard> {
   Widget build(BuildContext context) {
 
     return Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(10.0).copyWith(),
         child: Container(
           decoration: BoxDecoration(
               border: Border.all(

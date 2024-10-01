@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final productModel = productModelFromJson(jsonString);
-
 class ProductModel {
   final int id;
   final String title;

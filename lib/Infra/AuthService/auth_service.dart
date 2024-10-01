@@ -27,6 +27,11 @@ class AuthService {
         .doc(userCredential.user?.uid)
         .set({});
 
+    await _fireStore
+        .collection(FireStoreCollection.orders)
+        .doc(userCredential.user?.uid)
+        .set({});
+
     return userCredential;
   }
 
@@ -38,8 +43,6 @@ class AuthService {
 
     return userCredential;
   }
-
-
 
   /// signWith GOOGLE
 
