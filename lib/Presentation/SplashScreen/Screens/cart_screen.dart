@@ -66,14 +66,14 @@ class _CartScreenState extends State<CartScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text('Total Price'),
-                    Text(value.totalCartProductValue.toStringAsFixed(2)),
+                    Text(value.cartValue.toStringAsFixed(2)),
                   ],
                 ),
                 SizedBox(height: context.screenHeight(context) * 0.015),
                 Consumer<RazorpayProvider>(builder: (context, pay, child) {
                   return GestureDetector(
                     onTap: () {
-                      pay.getPayment(orderValue: value.totalCartProductValue);
+                      pay.getPayment(orderValue: value.cartValue);
                     },
                     child: const Button(buttonName: 'Place Order'),
                   );

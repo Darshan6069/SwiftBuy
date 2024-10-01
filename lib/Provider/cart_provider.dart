@@ -7,49 +7,51 @@ import '../../Infra/CartService/get_product_to_firebase.dart';
 
 class CartProvider with ChangeNotifier {
   bool isLoading = false;
-  List<ProductModel>  cartProductList=[];
-   double totalCartProductValue =0;
+  List<ProductModel> cartProductList = [];
+  double cartValue = 0;
 
-  void loding(bool val) {
+  void setLoading(bool val) {
     isLoading = val;
   }
 
+  void totalCartValue() {
+    cartValue = 0;
+    for (var product in cartProductList) {
+      cartValue = cartValue +
+          (product.price * double.parse(product.quantity.toString()));
+    }
+  }
+
   Future<void> addProductToCart(ProductModel product) async {
+    setLoading(true);
     await AddProductCart.addProductToCart(product);
-    totalOfItem();
+    setLoading(false);
     notifyListeners();
   }
 
   Future<void> GetProductToCart() async {
-    loding(true);
+    setLoading(true);
     cartProductList = await GetProductToFirebase().getCartProduct();
-    totalOfItem();
-    loding(false);
+    totalCartValue();
+    setLoading(false);
     notifyListeners();
   }
 
   Future<void> DeleteProduct(String productId) async {
-    loding(true);
+    setLoading(true);
     await DeletProductToCart.deleteProductFromCart(productId);
-    loding(false);
-    totalOfItem();
+    setLoading(false);
+    
     notifyListeners();
   }
 
   Future<void> DecreaseQnty(String productId) async {
-    loding(true);
+    setLoading(true);
     await DeletProductToCart.DecreaseQnt(productId);
-    totalOfItem();
-    loding(false);
+    
+    setLoading(false);
     notifyListeners();
   }
 
-  void totalOfItem() {
-    totalCartProductValue =0;
-    for (var element in cartProductList) {
-      double productVal = double.parse(element.quantity.toString()) *
-          double.parse(element.price.toString());
-      totalCartProductValue = totalCartProductValue + productVal;
-    }
-  }
+
 }

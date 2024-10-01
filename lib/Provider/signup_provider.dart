@@ -13,7 +13,7 @@ class AuthProvider extends ChangeNotifier {
       required BuildContext context}) async {
     // setLoading(true);
     userCredential =
-        await AuthService().SignUpWithEmail(email: email, password: password);
+        await AuthService().signUpWithEmail(email: email, password: password);
     //setLoading(false);
     notifyListeners();
     Navigator.of(context).pushAndRemoveUntil(
@@ -30,7 +30,7 @@ class AuthProvider extends ChangeNotifier {
       required BuildContext context}) async {
     // setLoading(true);
     userCredential =
-        await AuthService.LoginWithEmail(email: email, password: password);
+        await AuthService.loginWithEmail(email: email, password: password);
     //setLoading(false);
     notifyListeners();
     Navigator.of(context).pushAndRemoveUntil(
