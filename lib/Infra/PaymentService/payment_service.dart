@@ -15,14 +15,14 @@ class PaymentService {
     // Do something when an external wallet was selected
   }
 
-  void getPaymentService({required double orderValue}) {
+  void getPaymentService({required int orderValue}) {
     _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
     _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
     _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
     var options = {
       'email': 'savaliyadarshan96@gmail.com',
       'contact': '812312312',
-      'key': 'rzp_test_1DP5mmOlF5G5ag',
+      'key': 'rzp_test_8q6i0nQ3mc239Y',
       'amount': orderValue,
       'name': 'SwiftBuy',
       'description': 'Enjoy Swiftbuy fast services !',

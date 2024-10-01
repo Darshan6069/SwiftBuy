@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class RazorpayProvider with ChangeNotifier{
 
-  void getPayment({required double orderValue}){
+  void getPayment({required int orderValue}){
     PaymentService().getPaymentService(orderValue: orderValue);
     notifyListeners();
   }

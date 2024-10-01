@@ -73,7 +73,7 @@ class _CartScreenState extends State<CartScreen> {
                 Consumer<RazorpayProvider>(builder: (context, pay, child) {
                   return GestureDetector(
                     onTap: () {
-                      pay.getPayment(orderValue: value.cartValue);
+                      pay.getPayment(orderValue: int.parse(value.cartValue.toStringAsFixed(0)));
                     },
                     child: const Button(buttonName: 'Place Order'),
                   );
