@@ -38,9 +38,9 @@ class OrderDetails {
   factory OrderDetails.fromJson(Map<String, dynamic> json) => OrderDetails(
         orderId: json["orderId"],
         userEmail: json["userEmail"],
-        timeStamp: json["timeStamp"],
+        timeStamp: (json["timeStamp"] as Timestamp).toDate(),
         orderValue: json["orderValue"],
-        products: json["products"],
+        products:  List<ProductModel>.from(json["products"].map((x) => ProductModel.fromJson(x))),
         paymentId: json["paymentId"],
       );
 

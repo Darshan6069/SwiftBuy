@@ -28,7 +28,7 @@ class AuthService {
         .set({});
 
     await _fireStore
-        .collection(FireStoreCollection.orders)
+        .collection(FireStoreCollection.order)
         .doc(userCredential.user?.uid)
         .set({});
 

@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/Provider/api_provider.dart';
+import 'package:ecommerce_app/Provider/order_provider.dart';
 import 'package:ecommerce_app/Provider/razorpay_provider.dart';
 import 'package:ecommerce_app/Provider/signup_provider.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => RazorpayProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => OrderProvider(),
         )
       ],
       child: MaterialApp(

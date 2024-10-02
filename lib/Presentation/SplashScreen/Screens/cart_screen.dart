@@ -44,7 +44,7 @@ class _CartScreenState extends State<CartScreen> {
             child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Consumer<CartProvider>(builder: (context, value, child) {
-            return Column(
+            return  (value.cartProductList.isEmpty)? Text ('No Data'):Column(
               children: [
                 value.isLoading
                     ? const Center(
