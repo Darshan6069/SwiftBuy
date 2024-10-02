@@ -77,6 +77,7 @@ class _CartScreenState extends State<CartScreen> {
                         return GestureDetector(
                           onTap: () {
                             pay.getPayment(
+                              context: context,
                               orderValue:
                                   int.parse(value.cartValue.toStringAsFixed(0)),
                               products: value.cartProductList,

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_app/Domain/ProductModel/product_model.dart';
 
 class OrderDetails {
@@ -37,7 +38,7 @@ class OrderDetails {
   factory OrderDetails.fromJson(Map<String, dynamic> json) => OrderDetails(
         orderId: json["orderId"],
         userEmail: json["userEmail"],
-        timeStamp: DateTime.parse(json["timeStamp"]),
+        timeStamp: (json['timeStamp'] as Timestamp).toDate(),
         orderValue: json["orderValue"],
         products: List<ProductModel>.from(
             json["products"].map((x) => ProductModel.fromJson(x))),
