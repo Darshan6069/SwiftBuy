@@ -109,7 +109,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   onTap: () {
                     Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(
-                        builder: (context) => const RagistrationScreen(),
+                        builder: (context) =>  RagistrationScreen(
+                          onLocaleChange: (){},
+                        ),
                       ),
                       (route) => false,
                     );
