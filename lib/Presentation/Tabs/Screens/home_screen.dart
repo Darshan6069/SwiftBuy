@@ -12,23 +12,21 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   bool isLoad = false;
 
   @override
   void initState() {
+    super.initState();
     Provider.of<ApiProvider>(context, listen: false).CategoryApi();
     Provider.of<ApiProvider>(context, listen: false).ProductApi();
-    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
@@ -65,10 +63,12 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               height: context.screenHeight(context) * 0.20,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  image: const DecorationImage(
-                      image: AssetImage('assets/offersimage.jpg'),
-                      fit: BoxFit.contain)),
+                borderRadius: BorderRadius.circular(20),
+                image: const DecorationImage(
+                  image: AssetImage('assets/offersimage.jpg'),
+                  fit: BoxFit.contain,
+                ),
+              ),
             ),
             SizedBox(
               height: 60,
@@ -116,10 +116,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 8,
-                      mainAxisExtent: context.screenHeight(context) * 0.359,
-                      mainAxisSpacing: 8),
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 8,
+                    mainAxisExtent: context.screenHeight(context) * 0.359,
+                    mainAxisSpacing: 8,
+                  ),
                   itemCount: productPro.productDataList.length,
                   itemBuilder: (context, index) {
                     return ProductCard(

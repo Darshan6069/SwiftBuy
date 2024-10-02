@@ -44,46 +44,49 @@ class _CartScreenState extends State<CartScreen> {
             child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Consumer<CartProvider>(builder: (context, value, child) {
-            return  (value.cartProductList.isEmpty)? Text ('No Data'):Column(
-              children: [
-                value.isLoading
-                    ? const Center(
-                        child: CircularProgressIndicator(),
-                      )
-                    : ListView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        scrollDirection: Axis.vertical,
-                        itemCount: value.cartProductList.length,
-                        itemBuilder: (context, index) {
-                          return ProductCard(
-                            product: value.cartProductList[index],
-                            showDeleteIcon: true,
-                          );
-                        },
+            return (value.cartProductList.isEmpty)
+                ? const Text('No Data')
+                : Column(
+                    children: [
+                      value.isLoading
+                          ? const Center(
+                              child: CircularProgressIndicator(),
+                            )
+                          : ListView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              scrollDirection: Axis.vertical,
+                              itemCount: value.cartProductList.length,
+                              itemBuilder: (context, index) {
+                                return ProductCard(
+                                  product: value.cartProductList[index],
+                                  showDeleteIcon: true,
+                                );
+                              },
+                            ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text('Total Price'),
+                          Text(value.cartValue.toStringAsFixed(2)),
+                        ],
                       ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('Total Price'),
-                    Text(value.cartValue.toStringAsFixed(2)),
-                  ],
-                ),
-                SizedBox(height: context.screenHeight(context) * 0.015),
-                Consumer<RazorpayProvider>(builder: (context, pay, child) {
-                  return GestureDetector(
-                    onTap: () {
-                      pay.getPayment(
-                        orderValue:
-                            int.parse(value.cartValue.toStringAsFixed(0)),
-                        products: value.cartProductList,
-                      );
-                    },
-                    child: const Button(buttonName: 'Place Order'),
+                      SizedBox(height: context.screenHeight(context) * 0.015),
+                      Consumer<RazorpayProvider>(
+                          builder: (context, pay, child) {
+                        return GestureDetector(
+                          onTap: () {
+                            pay.getPayment(
+                              orderValue:
+                                  int.parse(value.cartValue.toStringAsFixed(0)),
+                              products: value.cartProductList,
+                            );
+                          },
+                          child: const Button(buttonName: 'Place Order'),
+                        );
+                      })
+                    ],
                   );
-                })
-              ],
-            );
           }),
         )));
   }
