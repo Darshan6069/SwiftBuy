@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/Core/extension.dart';
-import 'package:ecommerce_app/Presentation/SplashScreen/Auth/login_screen.dart';
-import 'package:ecommerce_app/Presentation/SplashScreen/Screens/categories_screen.dart';
+import 'package:ecommerce_app/Presentation/Auth/login_screen.dart';
+import 'package:ecommerce_app/Presentation/Tabs/Screens/categories_screen.dart';
 import 'package:ecommerce_app/Presentation/common/product_card.dart';
 import 'package:ecommerce_app/Provider/api_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';

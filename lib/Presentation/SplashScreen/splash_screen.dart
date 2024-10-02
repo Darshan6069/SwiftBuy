@@ -1,7 +1,7 @@
 import 'package:ecommerce_app/Core/extension.dart';
 import 'package:flutter/material.dart';
 
-import 'Auth/login_screen.dart';
+import '../Auth/login_screen.dart';
 import '../common/Ragistration/button.dart';
 
 class SplashScreen extends StatefulWidget {

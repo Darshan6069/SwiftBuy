@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/Core/extension.dart';
 import 'package:ecommerce_app/Domain/orders/order_details.dart';
-import 'package:ecommerce_app/Presentation/SplashScreen/Auth/login_screen.dart';
+import 'package:ecommerce_app/Presentation/Auth/login_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

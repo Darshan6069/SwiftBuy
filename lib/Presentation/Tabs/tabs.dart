@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../Screens/cart_screen.dart';
-import '../Screens/categories_screen.dart';
-import '../Screens/home_screen.dart';
-import '../Screens/profile_screen.dart';
+import 'Screens/cart_screen.dart';
+import 'Screens/categories_screen.dart';
+import 'Screens/home_screen.dart';
+import 'Screens/profile_screen.dart';
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen({super.key});

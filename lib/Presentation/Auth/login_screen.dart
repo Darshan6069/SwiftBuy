@@ -1,27 +1,23 @@
 import 'package:ecommerce_app/Core/extension.dart';
+import 'package:ecommerce_app/Presentation/Auth/Ragistration/ragistration_screen.dart';
 import 'package:ecommerce_app/Provider/signup_provider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../common/Ragistration/button.dart';
+import '../common/Ragistration/common_text.dart';
+import '../common/Ragistration/google_facebook_Button.dart';
+import '../common/Ragistration/textformfeild.dart';
 
-import '../../../common/Ragistration/button.dart';
-import '../../../common/Ragistration/common_text.dart';
-import '../../../common/Ragistration/google_facebook_Button.dart';
-import '../../../common/Ragistration/textformfeild.dart';
-import '../../../forgot_password/forgot_password.dart';
-import '../login_screen.dart';
-
-class RagistrationScreen extends StatefulWidget {
-  const RagistrationScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  State<RagistrationScreen> createState() => _RagistrationScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _RagistrationScreenState extends State<RagistrationScreen> {
-  TextEditingController emailControler = TextEditingController();
+class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController emailNameController = TextEditingController();
   TextEditingController passWordController = TextEditingController();
-  TextEditingController nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +32,7 @@ class _RagistrationScreenState extends State<RagistrationScreen> {
               height: context.screenHeight(context) * 0.090,
             ),
             const Text(
-              'Create an account',
+              'Hi, Welcome! 👋',
               style: TextStyle(
                 fontSize: 36,
                 fontWeight: FontWeight.bold,
@@ -44,41 +40,29 @@ class _RagistrationScreenState extends State<RagistrationScreen> {
             ),
             SizedBox(height: context.screenHeight(context) * 0.022),
             const Text(
-              'Create an account to manage your\nmoney transfer with Mono. ',
+              'Log in to Mono and experience a faster,\neasier way to send and receive money.',
               style: TextStyle(fontSize: 21),
             ),
-            SizedBox(height: context.screenHeight(context) * 0.030),
-            const CommonText(text: 'Full Name'),
-            TextForm(
-              controller: nameController,
-              hint: 'Savaliya Darshan',
-              Icons: CupertinoIcons.person,
-            ),
-            SizedBox(height: context.screenHeight(context) * 0.008),
+            SizedBox(height: context.screenHeight(context) * 0.040),
             const CommonText(text: 'Email'),
             TextForm(
-              controller: emailControler,
+              controller: emailNameController,
               hint: 'darshan12@gmail.com',
               Icons: Icons.email_outlined,
             ),
-            SizedBox(height: context.screenHeight(context) * 0.009),
+            SizedBox(height: context.screenHeight(context) * 0.020),
             const CommonText(text: 'Password'),
             TextForm(
               controller: passWordController,
               hint: '********',
               Icons: Icons.password,
             ),
-            SizedBox(height: context.screenHeight(context) * 0.002),
+            SizedBox(height: context.screenHeight(context) * 0.003),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 GestureDetector(
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ForgotPassword(),
-                    ),
-                  ),
+                  onTap: () {},
                   child: const Text(
                     'Forgot Password',
                     style: TextStyle(color: Colors.red, fontSize: 15),
@@ -86,18 +70,18 @@ class _RagistrationScreenState extends State<RagistrationScreen> {
                 ),
               ],
             ),
-            SizedBox(height: context.screenHeight(context) * 0.010),
+            SizedBox(height: context.screenHeight(context) * 0.020),
             Consumer<AuthProvider>(builder: (context, value, child) {
               return GestureDetector(
                 onTap: () {
-                  value.SignUp(
-                      email: emailControler.text,
+                  value.Login(
+                      email: emailNameController.text,
                       password: passWordController.text,
                       context: context);
                 },
                 child: const Button(
-                  buttonName: 'SignUp',
-                ),
+                        buttonName: 'Login',
+                      ),
               );
             }),
             Padding(
@@ -106,31 +90,31 @@ class _RagistrationScreenState extends State<RagistrationScreen> {
             ),
             GestureDetector(
               onTap: () {},
-              child: const GoogleFacebookButton(
-                  image: 'assets/LoginScreen/google.svg'),
+              child:
+                  const GoogleFacebookButton(image: 'assets/LoginScreen/google.svg'),
             ),
-            SizedBox(height: context.screenHeight(context) * 0.010),
+            SizedBox(height: context.screenHeight(context) * 0.020),
             GestureDetector(
               onTap: () {},
               child: const GoogleFacebookButton(
                   image: 'assets/LoginScreen/facebook.svg'),
             ),
-            SizedBox(height: context.screenHeight(context) * 0.010),
+            SizedBox(height: context.screenHeight(context) * 0.020),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('Already have an account ,',
+                const Text('Don\'t have an account?',
                     style: TextStyle(fontSize: 16)),
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(
-                        builder: (context) => const LoginScreen(),
+                        builder: (context) => const RagistrationScreen(),
                       ),
                       (route) => false,
                     );
                   },
-                  child: const Text('Sign In',
+                  child: const Text('Sign up',
                       style: TextStyle(color: Colors.purple, fontSize: 16)),
                 ),
               ],

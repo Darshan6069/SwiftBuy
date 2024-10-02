@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/Core/extension.dart';
-import 'package:ecommerce_app/Presentation/SplashScreen/Screens/order_details_screen.dart';
+import 'package:ecommerce_app/Presentation/Tabs/Screens/order_details_screen.dart';
 import 'package:ecommerce_app/Presentation/common/Ragistration/button.dart';
 import 'package:flutter/material.dart';
 
