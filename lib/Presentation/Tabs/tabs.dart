@@ -15,11 +15,13 @@ class TabsScreen extends StatefulWidget {
 
 class _TabsScreenState extends State<TabsScreen> {
   int _currentIndex = 0;
-  final List<Widget> _pages = [
-    const HomeScreen(),
-    const CategoriesScreen(iD: 'electronics',),
-    const CartScreen(),
-    const ProfileScreen()
+  static const List<Widget> _pages = [
+    HomeScreen(),
+    CategoriesScreen(
+      iD: 'electronics',
+    ),
+    CartScreen(),
+    ProfileScreen()
   ];
 
   @override

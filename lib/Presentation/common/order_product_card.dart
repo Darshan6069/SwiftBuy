@@ -1,11 +1,10 @@
-
 import 'package:flutter/material.dart';
 
 import '../../Domain/ProductModel/product_model.dart';
 import 'product_card.dart';
 
 class OrderProductCard extends StatelessWidget {
-  const OrderProductCard({super.key,required this.orderProduct});
+  const OrderProductCard({super.key, required this.orderProduct});
   final List<ProductModel> orderProduct;
 
   @override

@@ -1,7 +1,11 @@
+import 'dart:ffi';
+
 import 'package:ecommerce_app/Core/extension.dart';
 import 'package:ecommerce_app/Provider/signup_provider.dart';
+import 'package:ecommerce_app/core/app_locale.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:provider/provider.dart';
 
 import '../../common/Ragistration/button.dart';
@@ -12,7 +16,12 @@ import '../../forgot_password/forgot_password.dart';
 import '../login_screen.dart';
 
 class RagistrationScreen extends StatefulWidget {
-  const RagistrationScreen({super.key});
+  const RagistrationScreen({
+    super.key,
+    required this.onLocaleChange,
+  });
+
+  final VoidCallback onLocaleChange;
 
   @override
   State<RagistrationScreen> createState() => _RagistrationScreenState();
@@ -22,6 +31,7 @@ class _RagistrationScreenState extends State<RagistrationScreen> {
   TextEditingController emailControler = TextEditingController();
   TextEditingController passWordController = TextEditingController();
   TextEditingController nameController = TextEditingController();
+  final FlutterLocalization localization = FlutterLocalization.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +45,9 @@ class _RagistrationScreenState extends State<RagistrationScreen> {
             SizedBox(
               height: context.screenHeight(context) * 0.090,
             ),
-            const Text(
-              'Create an account',
-              style: TextStyle(
+            Text(
+              AppLocale.title.getString(context),
+              style: const TextStyle(
                 fontSize: 36,
                 fontWeight: FontWeight.bold,
               ),
@@ -90,10 +100,11 @@ class _RagistrationScreenState extends State<RagistrationScreen> {
             Consumer<AuthProvider>(builder: (context, value, child) {
               return GestureDetector(
                 onTap: () {
-                  value.SignUp(
-                      email: emailControler.text,
-                      password: passWordController.text,
-                      context: context);
+                  widget.onLocaleChange();
+                  // value.SignUp(
+                  //     email: emailControler.text,
+                  //     password: passWordController.text,
+                  //     context: context);
                 },
                 child: const Button(
                   buttonName: 'SignUp',
@@ -102,7 +113,9 @@ class _RagistrationScreenState extends State<RagistrationScreen> {
             }),
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Divider(height: context.screenHeight(context) * 0.020, color: Colors.black54),
+              child: Divider(
+                  height: context.screenHeight(context) * 0.020,
+                  color: Colors.black54),
             ),
             GestureDetector(
               onTap: () {},

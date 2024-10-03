@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 extension BuildContextExtension on BuildContext {
@@ -16,7 +15,7 @@ extension BuildContextExtension on BuildContext {
       MaterialPageRoute(
         builder: (context) => target,
       ),
-          (route) => false,
+      (route) => false,
     );
   }
 }
