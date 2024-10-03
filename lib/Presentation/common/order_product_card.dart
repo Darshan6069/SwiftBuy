@@ -1,5 +1,4 @@
-import 'package:ecommerce_app/Core/extension.dart';
-import 'package:ecommerce_app/Domain/orders/order_details.dart';
+
 import 'package:flutter/material.dart';
 
 import '../../Domain/ProductModel/product_model.dart';
@@ -13,7 +12,7 @@ class OrderProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        physics: ClampingScrollPhysics(),
+        physics: const ClampingScrollPhysics(),
         child: ListView.builder(
           shrinkWrap: true,
           scrollDirection: Axis.vertical,
